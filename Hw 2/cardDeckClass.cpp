@@ -21,7 +21,7 @@ cardDeckClass::cardDeckClass()
   }
 
 }
-void cardDeckClass::printCards()
+void cardDeckClass::print()
 {
   string rankStr[13] =
   {
@@ -37,6 +37,8 @@ void cardDeckClass::printCards()
     for(int rk = ACE; rk <= TWO; rk++){
       cout << rankStr[(static_cast<int>(deck[index].rank))] << " of ";
       cout << suitStr[(static_cast<int>(deck[index].suit))] << endl;
+
+      index++;
     }
   }
 }
