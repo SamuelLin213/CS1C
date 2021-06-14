@@ -3,11 +3,7 @@ using namespace std;
 
 class cardDeckClass;
 
-typedef enum{CLUBS, DIAMONDS, HEARTS, SPADES} suits;
-typedef enum {ACE, KING, QUEEN, JACK, TEN, NINE, EIGHT, SEVEN, SIX, FIVE,
-  FOUR, THREE, TWO} ranks;
-
-cardDeckClass::cardDeckClass()
+void cardDeckClass::initializeCards()
 {
   int index = 0;
 
@@ -19,13 +15,14 @@ cardDeckClass::cardDeckClass()
       index++;
     }
   }
-
 }
-void cardDeckClass::print()
+
+
+void cardDeckClass::printCards()
 {
   string rankStr[13] =
   {
-    "ace", "king", "queen", "jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"
+    "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"
   };
   string suitStr[4] =
   {
@@ -41,4 +38,48 @@ void cardDeckClass::print()
       index++;
     }
   }
+}
+void cardDeckClass::perfectShuffle()
+{
+  int half = DECK_SIZE/2;
+  cards left[half];
+  cards right[half];
+
+  for(int x = 0; x < half; x++)
+  {
+    left[x].rank = deck[x].rank;
+    left[x].suit = deck[x].suit;
+
+    right[x].rank = deck[x+half].rank;
+    right[x].suit = deck[x+half].suit;
+  }
+
+  for(int x = 0; x < half; x++)
+  {
+    deck[x*2].rank = left[x].rank;
+    deck[x*2].suit = left[x].suit;
+
+    deck[x*2+1].rank = right[x].rank;
+    deck[x*2+1].suit = right[x].suit;
+
+  }
+}
+
+bool cardDeckClass::compareTo(cardDeckClass &other)
+{
+  for(int i = 0; i < DECK_SIZE; i++)
+  {
+    if( (this->deck[i].suit != other.deck[i].suit) || (this->deck[i].rank != other.deck[i].rank) )
+    {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+
+void cardDeckClass::setRank(int i, ranks rk)
+{
+  deck[i].rank = rk;
 }

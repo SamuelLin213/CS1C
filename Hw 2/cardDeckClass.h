@@ -7,25 +7,28 @@
 #include <fstream>
 using namespace std;
 
-// enum suit {clubs, diamonds, hearts, spades};
-// enum rk {ACE, KING, QUEEN, JACK, TEN, NINE, eight, seven, six, five, four,
-//    three, two};
+
+const int DECK_SIZE = 52;
+typedef enum {CLUBS, DIAMONDS, HEARTS, SPADES} suits;
+typedef enum {ACE, KING, QUEEN, JACK, TEN, NINE, EIGHT, SEVEN, SIX, FIVE,
+  FOUR, THREE, TWO} ranks;
 
 class cardDeckClass
 {
   public:
-    cardDeckClass();
+    void initializeCards();
     void printCards();
+    bool compareTo(cardDeckClass &other);
+    void perfectShuffle();
+    void setRank(int i, ranks rk);
+
   private:
-    typedef enum {CLUBS, DIAMONDS, HEARTS, SPADES} suits;
-    typedef enum {ACE, KING, QUEEN, JACK, TEN, NINE, EIGHT, SEVEN, SIX, FIVE,
-      FOUR, THREE, TWO} ranks;
     typedef struct
     {
       suits suit;
       ranks rank;
     } cards;
-    cards deck[52];
+    cards deck[DECK_SIZE];
 };
 
 #endif
