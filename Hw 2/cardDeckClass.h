@@ -16,11 +16,14 @@ typedef enum {ACE, KING, QUEEN, JACK, TEN, NINE, EIGHT, SEVEN, SIX, FIVE,
 class cardDeckClass
 {
   public:
+    cardDeckClass();
+    ~cardDeckClass();
     void initializeCards();
     void printCards();
     bool compareTo(cardDeckClass &other);
     void perfectShuffle();
     void setRank(int i, ranks rk);
+
 
   private:
     typedef struct

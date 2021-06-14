@@ -3,7 +3,7 @@ using namespace std;
 
 class cardDeckClass;
 
-void cardDeckClass::initializeCards()
+cardDeckClass::cardDeckClass()
 {
   int index = 0;
 
@@ -78,8 +78,7 @@ bool cardDeckClass::compareTo(cardDeckClass &other)
   return true;
 }
 
-
-void cardDeckClass::setRank(int i, ranks rk)
+cardDeckClass::~cardDeckClass()
 {
-  deck[i].rank = rk;
+  
 }
