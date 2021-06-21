@@ -18,26 +18,20 @@ using namespace std;
  * INPUT:
  *    <none>
  * OUPUT:
- *    1 - Original Deck
- *    2 - Deck perfectly shuffled once
- *    3 - Final deck - deck shuffled
- *        until original order
- *    4 - Number of shuffles printed
+ *    1 - ExtendedTime object created
+ *    2 - ExtendedTime object printed
+ *    3 - Invoice object created
+ *    4 - Invoice object printed
  ************************************/
 
 int main()
 {
-  Time tm(1, 2, 3);
-  cout << "Time class: ";
-  cout << tm;
-  cout << endl << endl;
-
-  ExtendedTime etm(4, 5, 6, PACIFIC);
+  ExtendedTime etm(1, 2, 3, PACIFIC);
   cout << "Extended time class: ";
   cout << etm;
   cout << endl << endl;
 
-  Invoice ivtm(7, 8, 9);
+  Invoice ivtm(4, 5, 6);
   cout << "Invoice class: ";
   cout << ivtm;
   cout << endl << endl;
