@@ -20,11 +20,11 @@ cardDeckClass::cardDeckClass()
 
 void cardDeckClass::printCards()
 {
-  string rankStr[13] =
+  string rankStr[RANK_SIZE] =
   {
     "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"
   };
-  string suitStr[4] =
+  string suitStr[SUIT_SIZE] =
   {
     "clubs", "diamonds", "hearts", "spades"
   };
@@ -41,20 +41,19 @@ void cardDeckClass::printCards()
 }
 void cardDeckClass::perfectShuffle()
 {
-  int half = DECK_SIZE/2;
-  cards left[half];
-  cards right[half];
+  cards left[HALF_DECK_SIZE];
+  cards right[HALF_DECK_SIZE];
 
-  for(int x = 0; x < half; x++)
+  for(int x = 0; x < HALF_DECK_SIZE; x++)
   {
     left[x].rank = deck[x].rank;
     left[x].suit = deck[x].suit;
 
-    right[x].rank = deck[x+half].rank;
-    right[x].suit = deck[x+half].suit;
+    right[x].rank = deck[x+HALF_DECK_SIZE].rank;
+    right[x].suit = deck[x+HALF_DECK_SIZE].suit;
   }
 
-  for(int x = 0; x < half; x++)
+  for(int x = 0; x < HALF_DECK_SIZE; x++)
   {
     deck[x*2].rank = left[x].rank;
     deck[x*2].suit = left[x].suit;
@@ -80,5 +79,5 @@ bool cardDeckClass::compareTo(cardDeckClass &other)
 
 cardDeckClass::~cardDeckClass()
 {
-  
+
 }
