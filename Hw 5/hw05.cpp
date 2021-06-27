@@ -2,63 +2,55 @@
 #include <iomanip>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
 using namespace std;
 
-//vector<int> Lotto(const int, const int);
+vector<int> Lotto(const int, const int);
+int myrandom (int i);
 
 int main()
 {
+  srand ( unsigned ( std::time(0) ) );
   const int VALUES = 51;
-  int y = 1;
-  int x = 0;
+  const int SPOTS = 6;
 
   vector<int> winners;
-  // winners = Lotto(51, 6);
+  winners = Lotto(VALUES, SPOTS);
 
-  vector<int> values;
-
-  cout << "iterating through vector" << endl;
-  for(x = 0; x < VALUES; x++)
+  cout << "Your lottory card:" << endl;
+  for(int z: winners)
   {
-    values.push_back(y);
-    cout << values.at(y-1) << " ";
-    y++;
+    cout << z << " ";
   }
-
-  // for(vector<int>::iterator x = winners.begin(); x != winners.end(); x++)
-  // {
-  //   random_shuffle(values.begin(), values.end());
-  //   winners.push_back(values.front());
-  // }
-  //
-  // cout << "Your lottory card:" << endl;
-  // for(int z: winners)
-  // {
-  //   cout << z << " ";
-  // }
-  // cout << endl;
+  cout << endl;
 
   return 0;
 }
 
-// vector<int> Lotto(const int spots, const int randNum)
-// {
-//   vector<int> winList(spots);
-//   vector<int> values(randNum);
-//   int y = 0;
-//   unsigned int x = 0;
-//
-//   for(y = 1; y <= randNum; y++)
-//   {
-//     values.push_back(y);
-//   }
-//
-//   for(x = 0; x < winList.capacity(); x++){
-//     random_shuffle(values.begin(), values.end());
-//     winList.push_back(values.front());
-//   }
-//
-//   values.clear();
-//
-//   return winList;
-// }
+vector<int> Lotto(const int randNum, const int spots)
+{
+  vector<int> winList(spots);
+  vector<int> values(randNum);
+  int index = 1;
+  int x = 0;
+  int z = 0;
+
+  for(x = 0; x < randNum; ++x)
+  {
+    values[x] = index;
+    index++;
+  }
+
+  for(z = 0; z < spots; ++z)
+  {
+    random_shuffle(values.begin(), values.end(), myrandom);
+    winList[z] = values[0];
+  }
+
+  return winList;
+}
+
+int myrandom (int i)
+{
+  return rand()%i;
+}
