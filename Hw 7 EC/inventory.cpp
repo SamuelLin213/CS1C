@@ -5,7 +5,12 @@ class ManageInventory;
 
 ManageInventory::~ManageInventory()
 {
+  for(int i = 0; p_pInventoryItems[i] != nullptr; i++)
+  {
+      delete p_pInventoryItems[i];
+  }
   delete [] p_pInventoryItems;
+  p_pInventoryItems = nullptr;
 }
 
 void ManageInventory::addItem(string name, int quantity, float cost)
