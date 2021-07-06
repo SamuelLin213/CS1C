@@ -2,6 +2,27 @@
 using namespace std;
 using namespace itemInfo;
 
+/**********************************************
+* Author : Samuel Lin
+* Date: July 6, 2021
+* Class: CS1C, Summer Session 2021
+* Assignment: Hw07 - Pointers & Dynamic Arrays
+* Summary:
+*	-Item struct and ManageInventory class are
+* used to store inventory and purchase info, copy
+* constructor is written to copy the inventory
+* object and transction history into another
+* object
+* INPUT:
+*    <none>
+* OUTPUT:
+*   -inventory list before and after Mark's
+*    purchases is printed
+*   -inventory list of copied object is printed
+*   -Mark's receipt is printed
+*   -transaction history is printed
+**********************************************/
+
 int main()
 {
   ManageInventory inventory;
