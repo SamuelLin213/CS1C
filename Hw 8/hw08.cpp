@@ -115,8 +115,7 @@ void print_2darray_dynamic_pointer(int** twoDD, int row, int col)
             // to compute the offset using pointer math
             // offset from twoDD: move to the correct row, add #row (i), dereference to obtain pointer to row
             //                    next, add #col (j), result: pointer to array element
-            int offset = i * row + j;
-            cout << *(twoDD + offset) << " ";
+	    cout << *(*(twoDD + i) + j) << " ";
         }
         cout << endl;
     }
