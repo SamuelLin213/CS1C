@@ -40,16 +40,23 @@ class Shape
     **********************/
     void Print();
 
-
-    virtual void Move(int x_, int y_){ x=x_; y=y_; }
-
     /**********************
-    * UpdateDimensions function
+    * Move function
     * Changes x/y coordinates
     * pre-condition:
     *     -int variable defined and passed in
     * post-condition:
     *     -x/y coordinates updated with parameters
+    **********************/
+    virtual void Move(int x_, int y_){ x=x_; y=y_; }
+
+    /**********************
+    * UpdateDimensions function
+    * Changes shape dimensions
+    * pre-condition:
+    *     -int variable defined and passed in
+    * post-condition:
+    *     -dimensions of shape updated
     **********************/
     virtual void UpdateDimensions(int, int) = 0;
   private:
