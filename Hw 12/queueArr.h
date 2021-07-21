@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <iomanip>
+#include "queueType.h"
 using namespace std;
 
 template <class Type>
-class queueArr
+class queueArr: queueType<Type>
 {
   public:
     //constructor
@@ -20,7 +21,6 @@ class queueArr
       :maxSize{max}
     {
       list = make_unique<Type[]>(maxSize);
-      //list = new Type[maxSize];
       qFront = 0;
       qBack = maxSize - 1;
       count = 0;
@@ -49,7 +49,6 @@ class queueArr
     queueArr(const queueArr<Type>& other)
       :maxSize{other.maxSize}, count{other.count}, qFront{other.qFront}, qBack{other.qBack}
     {
-      //this->list = new Type[maxSize];
       this->list = make_unique<Type[]>(maxSize);
 
       for(int x = 0; x < other.maxSize; x++)
@@ -66,7 +65,6 @@ class queueArr
     //    -destroys queue object
     ~queueArr()
     {
-      //delete [] list;
     }
 
     //overloaded assignment operator
@@ -78,10 +76,8 @@ class queueArr
     //queueArr<Type>& operator=(const queueArr<Type>& other);
     queueArr<Type>& operator=(const queueArr<Type>& other)
     {
-      //Type* temp = new Type[other.maxSize];
       unique_ptr<Type[]> temp(new Type[maxSize]);
       std::copy(other.list, other.list + other.maxSize, temp);
-      //delete list;
 
       list = temp;
       maxSize = other.maxSize;
@@ -116,7 +112,6 @@ class queueArr
     //    -returns pointer to the updated this object
     queueArr<Type>& operator=(queueArr&& other) noexcept
     {
-      //delete list;
       maxSize = other.maxSize;
       count = other.count;
       qFront = other.qFront;
@@ -256,6 +251,4 @@ class queueArr
     unique_ptr<Type[]> list; //pointer to array
 };
 
-//template class queueArr<int>;
-//#include "queueArr.cpp"
 #endif

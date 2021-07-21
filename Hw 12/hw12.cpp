@@ -1,4 +1,4 @@
-//#include "queueType.h"
+#include "queueType.h"
 #include "queueArr.h"
 using namespace std;
 
