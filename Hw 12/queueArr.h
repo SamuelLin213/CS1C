@@ -45,7 +45,6 @@ class queueArr: queueType<Type>
     //    -queueArr object initialized and passed in
     // post-condition:
     //    -queue object elements copied into this queue
-    //queueArr(const queueArr<Type>&);
     queueArr(const queueArr<Type>& other)
       :maxSize{other.maxSize}, count{other.count}, qFront{other.qFront}, qBack{other.qBack}
     {
@@ -73,7 +72,6 @@ class queueArr: queueType<Type>
     //    -queueArr object initialized and passed in
     // post-condition:
     //    -queue object elements stored into this queue
-    //queueArr<Type>& operator=(const queueArr<Type>& other);
     queueArr<Type>& operator=(const queueArr<Type>& other)
     {
       unique_ptr<Type[]> temp(new Type[maxSize]);
