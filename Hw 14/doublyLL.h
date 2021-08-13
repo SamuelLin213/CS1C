@@ -38,6 +38,7 @@ class doublyLinkedList
         nodeType<Type> start;
         nodeType<Type> *dummy = &start;
         nodeType<Type> otherF = other.first;
+
         while(otherF)
         {
           dummy->next = new nodeType<Type>(*otherF);
@@ -58,27 +59,6 @@ class doublyLinkedList
     //  -moves linked list other into this linked list
     doublyLinkedList<Type>& operator=(doublyLinkedList<Type>&& other) noexcept
     {
-      // if(this != other)
-      // {
-      //   while(first)
-      //   {
-      //     nodeType<Type> *temp = first;
-      //     first = first->next;
-      //     delete temp;
-      //   }
-      //
-      //   nodeType<Type> start;
-      //   nodeType<Type> *dummy = &start;
-      //   nodeType<Type> otherF = other.first;
-      //   while(otherF)
-      //   {
-      //     dummy->next = new nodeType<Type>(*otherF);
-      //     dummy = dummy->next;
-      //     otherF = otherF->next;
-      //   }
-      //   dummy->next = nullptr;
-      // }
-      // //other.destroy();
       first = nullptr;
       last = nullptr;
 
@@ -119,6 +99,7 @@ class doublyLinkedList
     void destroy()
     {
       nodeType<Type> *temp; //pointer to delete the node
+
       while (first != nullptr)
       {
         temp = first;
@@ -138,7 +119,7 @@ class doublyLinkedList
     void print() const
     {
       nodeType<Type> *current = first;
-      // current = first;
+
       while (current != nullptr)
       {
         cout << current->info << " ";
@@ -190,8 +171,8 @@ class doublyLinkedList
     bool search(const Type& searchItem) const
     {
       bool found = false;
-      nodeType<Type> *current; //pointer to traverse the list
-      current = first;
+      nodeType<Type> *current = first; //pointer to traverse the list
+
       while (current != nullptr && !found)
       {
         if (current->info >= searchItem)
@@ -213,11 +194,10 @@ class doublyLinkedList
     //  -adds new node to list in ascending order
     void insert(const Type& insertItem)
     {
-      nodeType<Type> *current;
-      //pointer to traverse the list
+      nodeType<Type> *current; //pointer to traverse the list
       nodeType<Type> *trailCurrent; //pointer just before current
-      nodeType<Type> *newNode;
-      //pointer to create a node
+      nodeType<Type> *newNode; //pointer to create a node
+
       bool found;
 
       newNode = new nodeType<Type>; //create the node
@@ -285,6 +265,7 @@ class doublyLinkedList
     {
       nodeType<Type> *trailCurrent; //pointer just before current
       nodeType<Type> *newNode = new nodeType<Type>; //create the node
+
       newNode->info = insertItem;
       newNode->next = nullptr;
       newNode->back = nullptr;
@@ -318,6 +299,7 @@ class doublyLinkedList
     {
       nodeType<Type> *current; //pointer to traverse the list
       nodeType<Type> *trailCurrent; //pointer just before current
+
       bool found;
       if (first == nullptr)
         cout << "Cannot delete from an empty list." << endl;
@@ -392,7 +374,6 @@ class doublyLinkedList
       last = nullptr;
 
       nodeType<Type> *current = otherList.first;
-
       nodeType<Type> *end = nullptr;
       nodeType<Type> *previous = nullptr;
 
@@ -426,31 +407,7 @@ class doublyLinkedList
     {
       first = nullptr;
       last = nullptr;
-      //
-      // nodeType<Type> *current = std::move(otherList.first);
-      //
-      // nodeType<Type> *end = nullptr;
-      // nodeType<Type> *previous = nullptr;
-      //
-      // while(current)
-      // {
-      //   nodeType<Type> *n = new nodeType<Type>;
-      //   n->info = std::move(current->info);
-      //
-      //   if(first == nullptr)
-      //   {
-      //     first = n;
-      //     end = first;
-      //   }
-      //   else{
-      //     end->next = n;
-      //     end = n;
-      //   }
-      //   n->back = std::move(previous);
-      //   previous = n;
-      //   current = current->next;
-      // }
-      // otherList.destroy();
+
       std::swap(first, otherList.first);
       std::swap(last, otherList.last);
     }
@@ -477,6 +434,7 @@ class doublyLinkedList
     //  -list initialized
     //post-condition:
     //  -pointer to first node is returned
+
     nodeType<Type>* getFirst()
     {
       return first;
@@ -488,6 +446,7 @@ class doublyLinkedList
     //  -list initialized
     //post-condition:
     //  -pointer to last node is returned
+
     nodeType<Type>* getLast()
     {
       return last;
